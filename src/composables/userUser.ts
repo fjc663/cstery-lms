@@ -1,7 +1,7 @@
 import { useUserInfoStore } from '@/stores/useUserInfoStore';
 import { userLoginAPI, userRegisterAPI, editPasswordAPI, getUserInfoAPI, updateUserInfoAPI } from '@/apis/userApi';
 import type { result, ieditPassword } from './interfaceType/commonInterface';
-import type { iuserInfo, iuser } from './interfaceType/userInterface';
+import type { iuserInfo, ilogin, iregister } from './interfaceType/userInterface';
 import { ElMessage } from 'element-plus';
 import router from '@/router';
 import { ref } from 'vue';
@@ -10,33 +10,36 @@ const useUserInfo = useUserInfoStore();
 
 // 用户数据
 const user = ref<iuserInfo>({
-    id: -1,
     username: '',
+    name: '',
     email: '',
     phone: '',
-    avatarUrl: '',
-    gender: -1,
-    birthdate: '',
+    avatar: '',
+    gender: 2,
     address: '',
-    lastLogin: '',
+    desc: ''
 });
 
 // 请求登录
-const userLogin = async (loginRegisterForm: iuser): Promise<number> => {
+const userLogin = async (loginForm: ilogin): Promise<number> => {
     //删除用户名和密码左右两端的空格
-    loginRegisterForm.username = loginRegisterForm.username.replace(/(^\s*)|(\s*$)/g, "");
-    loginRegisterForm.password = loginRegisterForm.password.replace(/(^\s*)|(\s*$)/g, "");
+    loginForm.username = loginForm.username.replace(/(^\s*)|(\s*$)/g, "");
+    loginForm.password = loginForm.password.replace(/(^\s*)|(\s*$)/g, "");
 
     // 发送登录请求
-    const res: result = await userLoginAPI(loginRegisterForm);
+    const res: result = await userLoginAPI(loginForm);
 
     if (res.code === 1) {
         ElMessage.success("登录成功");
 
         // 设置token和用户名
         useUserInfo.setToken(res.data.token);
-        useUserInfo.setUsername(loginRegisterForm.username);
-        useUserInfo.setAvatar(res.data.avatarUrl);
+        if (res.data.name !== null) {
+            useUserInfo.setTeachername(res.data.name);
+        } else {
+            useUserInfo.setTeachername(loginForm.username);
+        }
+        useUserInfo.setAvatar(res.data.avatar);
 
     } else {
         ElMessage.error(res.msg);
@@ -45,9 +48,9 @@ const userLogin = async (loginRegisterForm: iuser): Promise<number> => {
 };
 
 // 用户注册
-const userRegister = async (loginRegisterForm: iuser): Promise<number> => {
+const userRegister = async (registerForm: iregister): Promise<number> => {
     // 发送注册请求和处理响应结果
-    const res: result = await userRegisterAPI(loginRegisterForm);
+    const res: result = await userRegisterAPI(registerForm);
 
     if (res.code === 1) {
         ElMessage.success("注册成功，请用该账号登录");
@@ -60,7 +63,7 @@ const userRegister = async (loginRegisterForm: iuser): Promise<number> => {
 
 // 退出登录
 const logout = () => {
-    useUserInfo.removeTokenAndUsername()
+    useUserInfo.remove()
     router.push({ path: '/login', query: { isLogin: 1 } });
 }
 

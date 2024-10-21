@@ -41,7 +41,7 @@ const goToProfile = () => {
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-yuanzi"></use>
                     </svg>
-                    ChengSteryLms
+                    CsteryLms-教师端
                 </div>
             </el-col>
 
@@ -69,8 +69,8 @@ const goToProfile = () => {
                 <div v-else class="user-info">
                     <el-dropdown>
                         <span class="el-dropdown-link">
-                            <el-avatar :src="useUserInfo.avatarUrl" />
-                            <span>{{ useUserInfo.username }}</span>
+                            <el-avatar :src="useUserInfo.avatar" />
+                            <span>{{ useUserInfo.teachername }}</span>
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu>
@@ -105,7 +105,7 @@ const goToProfile = () => {
 .logo {
     font-size: 26px;
     font-weight: bold;
-    color: #fff;
+    color: #ce23ce;
 }
 
 .center-content {

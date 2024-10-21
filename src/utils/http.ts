@@ -25,7 +25,7 @@ httpInstance.interceptors.response.use(res => res.data, e => {
         ElMessage.warning("请先登录");
 
         const userInfoStore = useUserInfoStore();
-        userInfoStore.removeTokenAndUsername();  // 清除token
+        userInfoStore.remove();  // 清除token
 
         router.push({path: '/login', query: {redirect: router.currentRoute.value.fullPath}})  // 登录完返回登录前页面
     }

@@ -14,4 +14,12 @@ export default [
 
   ...pluginVue.configs['flat/essential'],
   ...vueTsEslintConfig(),
+
+  // 允许项目使用any
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off', // 允许使用 any 类型
+    },
+  },
+
 ]

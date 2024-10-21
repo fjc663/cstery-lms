@@ -3,28 +3,28 @@ import { ref } from "vue";
 
 export const useUserInfoStore = defineStore('userInfo', () => {
     const token = ref<string>('');
-    const username = ref<string>('');
-    const avatarUrl = ref<string>('');
+    const teachername = ref<string>('');
+    const avatar = ref<string>('');
 
     function setToken(newToken: string) {
         token.value = newToken;
     }
 
-    function setUsername(newUsername: string) {
-        username.value = newUsername;
+    function setTeachername(newUsername: string) {
+        teachername.value = newUsername;
     }
 
-    function setAvatar(newAvatarUrl: string) {
-        avatarUrl.value = newAvatarUrl;
+    function setAvatar(newAvatar: string) {
+        avatar.value = newAvatar;
     }
 
-    function removeTokenAndUsername() {
+    function remove() {
         token.value = '';
-        username.value = '';
-        avatarUrl.value = '';
+        teachername.value = '';
+        avatar.value = '';
     }
 
-    return { token, username, avatarUrl, setToken, setUsername, setAvatar, removeTokenAndUsername }
+    return { token, teachername, avatar, setToken, setTeachername, setAvatar, remove }
 
 },
     {

@@ -1,22 +1,22 @@
 import http from '@/utils/http'
-import type { iuser } from '@/composables/interfaceType/userInterface'
+import type { iregister, ilogin } from '@/composables/interfaceType/userInterface'
 import type { iuserInfo } from '@/composables/interfaceType/userInterface'
 import type { ieditPassword } from '@/composables/interfaceType/commonInterface'
 
 
 // 用户注册
-export function userRegisterAPI(data: iuser): any {
+export function userRegisterAPI(data: iregister): any {
     return http({
-        url: '/user/user/register',
+        url: '/teacher/user/register',
         method: 'Post',
         data: data
     })
 }
 
 // 用户登录
-export function userLoginAPI(data: iuser): any {
+export function userLoginAPI(data: ilogin): any {
     return http({
-        url: '/user/user/login',
+        url: '/teacher/user/login',
         method: 'Post',
         data: data
     })
@@ -25,14 +25,14 @@ export function userLoginAPI(data: iuser): any {
 // 获得用户信息
 export function getUserInfoAPI(): any {
     return http({
-        url: '/user/user'
+        url: '/teacher/user'
     })
 }
 
 // 修改用户信息
 export function updateUserInfoAPI(data: iuserInfo): any {
     return http({
-        url: 'user/user',
+        url: '/teacher/user',
         method: 'Put',
         data: data
     })
@@ -41,7 +41,7 @@ export function updateUserInfoAPI(data: iuserInfo): any {
 // 修改密码
 export function editPasswordAPI(data: ieditPassword): any {
     return http({
-        url: '/user/user/editPassword',
+        url: '/teacher/user/editPassword',
         method: 'Put',
         data: data
     })
