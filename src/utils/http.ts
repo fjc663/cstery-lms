@@ -14,7 +14,7 @@ const httpInstance = axios.create({
 // axios请求拦截器
 httpInstance.interceptors.request.use(config => {
     const userInfoStore = useUserInfoStore();
-    config.headers.authorization = userInfoStore.token; // 配置token
+    config.headers.token = userInfoStore.token; // 配置token
 
     return config
 }, e => Promise.reject(e))

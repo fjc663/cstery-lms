@@ -91,7 +91,7 @@ const goToProfile = () => {
     /* 固定顶栏在页面顶部 */
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     z-index: 1000;
     /* 确保顶栏在最前面 */
     display: flex;
@@ -128,6 +128,7 @@ const goToProfile = () => {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-right: 30px;
 }
 
 .auth-buttons>.el-button {

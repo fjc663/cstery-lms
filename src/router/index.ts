@@ -9,9 +9,21 @@ const router = createRouter({
       component: () => import('../views/layout/LayoutView.vue'),
       children: [
         {
-          path: 'class/',
+          path: 'class',
           name: 'class',
-          component: () => import('@/views/ClassView.vue')
+          component: () => import('@/views/class/ClassView.vue'),
+          children: [
+            {
+              path: '',
+              name: 'classOverView',
+              component: () => import('@/views/class/components/ClassOverView.vue')
+            },
+            {
+              path: ':id',
+              name: 'classDetailView',
+              component: () => import('@/views/class/components/ClassDetailView.vue')
+            }
+          ]
         }
       ]
     },
