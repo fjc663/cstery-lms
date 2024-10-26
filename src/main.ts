@@ -21,7 +21,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.use(Lazyload, {
     loading: "http://127.0.0.1:8080/imgs/loading.gif",  //指定加载中的图像
     error: "http://127.0.0.1:8080/imgs/err.png",  //指定加载失败的图像
- });
+});
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)

@@ -30,11 +30,11 @@ const isEdit = ref<boolean>(false);
 const rules = ref<FormRules<iclass>>({
     class_name: [
         { required: true, message: '班级名称不能为空', trigger: 'blur' },
-        { min: 1, max: 20, message: '班级名称长度应为 1 到 100 个字符', trigger: 'blur' }
+        { min: 1, max: 100, message: '班级名称长度应为 1 到 100 个字符', trigger: 'blur' }
     ],
     teacher_name: [
         { required: true, message: '老师名称不能为空', trigger: 'blur' },
-        { min: 1, max: 20, message: '老师名称长度应为 1 到 100 个字符', trigger: 'blur' }
+        { min: 1, max: 100, message: '老师名称长度应为 1 到 100 个字符', trigger: 'blur' }
     ],
 });
 
@@ -97,7 +97,7 @@ const viewClassDetails = (classId: number) => {
 const { uploadClass } = useUpload();
 
 // 上传班级图片
-const onUploadCategory = async (avatar: any) => {
+const onUploadClass = async (avatar: any) => {
     const formData = new FormData();
     formData.append('class_image_file', avatar.file);
 
@@ -109,7 +109,7 @@ const onUploadCategory = async (avatar: any) => {
 };
 
 // 上传班级图片前的钩子函数
-const beforeCategoryUpload: UploadProps['beforeUpload'] = (rawFile) => {
+const beforeClassUpload: UploadProps['beforeUpload'] = (rawFile) => {
     if (rawFile.size / 1024 / 1024 > 10) {
         ElMessage.error('头像大小必须小于10MB');
         return false;
@@ -146,9 +146,9 @@ onMounted(() => getClass());
 
                 <el-form-item label="班级图片" prop="class_img">
                     <p class="upload-tip" style="color: red;">上传的班级图片应小于10MB，格式为JPG/PNG。</p>
-                    <el-upload class="class-uploader" :http-request="onUploadCategory" :show-file-list="false"
-                        :before-upload="beforeCategoryUpload">
-                        <img v-if="newClass.class_img" :src="newClass.class_img" class="uploaded-image" />
+                    <el-upload class="class-uploader" :http-request="onUploadClass" :show-file-list="false"
+                        :before-upload="beforeClassUpload">
+                        <img v-if="newClass.class_img" v-lazy="newClass.class_img" class="uploaded-image" />
                         <el-icon v-else class="class-uploader-icon">
                             <Plus />
                         </el-icon>

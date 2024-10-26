@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import useClass from '@/composables/useClass';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import useUtils from '@/composables/useUtils';
 import { Search } from '@element-plus/icons-vue'
 
-const router = useRouter();
 
 // 通过路由获取班级ID
 const route = useRoute();
@@ -49,12 +48,7 @@ const searchStudent = () => {
 }
 
 // 复制到剪贴板的函数
-const { copyToClipboard } = useUtils();
-
-// 返回上次路由
-const goBack = () => {
-    router.back();
-}
+const { copyToClipboard, goBack } = useUtils();
 
 // 初始化页面
 onMounted(async () => {

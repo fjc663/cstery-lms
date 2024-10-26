@@ -24,6 +24,28 @@ const router = createRouter({
               component: () => import('@/views/class/components/ClassDetailView.vue')
             }
           ]
+        },
+        {
+          path: 'task',
+          name: 'task',
+          component: () => import('@/views/task/taskView.vue'),
+          children: [
+            {
+              path: '',
+              name: 'taskOverView',
+              component: () => import('@/views/task/components/taskOverView.vue')
+            },
+            {
+              path: ':id',
+              name: 'taskCompletionView',
+              component: () => import('@/views/task/components/taskcompletionView.vue')
+            },
+            {
+              path: 'answer/:studentId',
+              name: 'taskCorrectView',
+              component: () => import('@/views/task/components/taskCorrectView.vue')
+            },
+          ]
         }
       ]
     },

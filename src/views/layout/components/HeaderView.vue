@@ -52,7 +52,7 @@ const goToProfile = () => {
                     background-color="transparent" active-text-color="#f56c6c" router>
                     <el-menu-item index="/">首页</el-menu-item>
                     <el-menu-item index="/class">班级管理</el-menu-item>
-                    <el-menu-item index="/homework">作业管理</el-menu-item>
+                    <el-menu-item index="/task">作业管理</el-menu-item>
                     <el-menu-item index="/score">成绩管理</el-menu-item>
                     <el-menu-item index="/talk">讨论区</el-menu-item>
                     <el-menu-item index="/resource">资源共享</el-menu-item>

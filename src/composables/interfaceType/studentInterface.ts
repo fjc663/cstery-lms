@@ -13,10 +13,16 @@ export interface istudent {
     desc: string,
 }
 
-// 学生信息分页查询
+// 学生信息分页查询条件
 export interface istudentPageQuery {
     page: number,
     pageSize: number,
     name?: string,
     gender?: number | null,
+}
+
+// 作业完成情况学生信息查询
+export interface istudentCompletion {
+    submitted: istudent[],
+    not_submitted: istudent[]
 }
