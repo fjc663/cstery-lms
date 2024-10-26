@@ -122,7 +122,7 @@ const editAssignment = async () => {
 
 // 跳转到打分页面
 const goToGradePage = (studentId: number) => {
-    router.push({path: `/task/answer/${studentId}`, query: {taskId: taskId}})
+    router.push({ path: `/task/answer/${studentId}`, query: { taskId: taskId } })
 };
 
 // 页面数据初始化
@@ -185,6 +185,18 @@ onMounted(async () => {
                             <el-table-column prop="submitted_at" label="提交时间">
                                 <template #default="scope">
                                     {{ formattedDateTime(scope.row.submitted_at) }}
+                                </template>
+                            </el-table-column>
+                            <el-table-column prop="submitted_at" label="修改时间">
+                                <template #default="scope">
+                                    {{ formattedDateTime(scope.row.edited_at) }}
+                                </template>
+                            </el-table-column>
+                            <el-table-column prop="is_correct" label="批改状态">
+                                <template #default="scope">
+                                    <el-tag :type="scope.row.is_correct ? 'success' : 'info'">
+                                        {{ scope.row.is_correct ? '已批改' : '未批改' }}
+                                    </el-tag>
                                 </template>
                             </el-table-column>
                             <el-table-column label="操作">
@@ -309,12 +321,6 @@ onMounted(async () => {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     /* 增加阴影效果 */
     cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.task-image:hover {
-    transform: scale(1.05);
-    /* 鼠标悬停放大效果 */
 }
 
 .edit-btn {

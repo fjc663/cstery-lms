@@ -11,6 +11,9 @@ export interface istudent {
     phone: string,
     address: string,
     desc: string,
+    submitted_at: Date,
+    edited_at: Date,
+    is_correct: boolean
 }
 
 // 学生信息分页查询条件

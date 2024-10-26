@@ -91,15 +91,16 @@ const getAnswer = async (studentId: number, taskId: number) => {
 }
 
 // 批改学生作答
-const correctAnswer = async (correct: icorrect) => {
+const correctAnswer = async (correct: icorrect): Promise<number> => {
     const res: result = await correctAnswerApi(correct);
 
     if (res.code === 1) {
-        ElMessage.success('success');
+        ElMessage.success('提交成功');
     } else {
         ElMessage.error(res.msg);
     }
 
+    return res.code;
 }
 
 export default function() {
