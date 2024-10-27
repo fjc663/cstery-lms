@@ -1,7 +1,7 @@
 import http from "@/utils/http";
 
 // 删除作业图片
-export function deleteTaskAPI(filenames: string[]): any {
+export function deleteImgAPI(filenames: string[]): any {
     // 手动构建查询参数
     const params = new URLSearchParams();
     filenames.forEach(filename => {

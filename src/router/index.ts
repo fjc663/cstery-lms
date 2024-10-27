@@ -38,7 +38,7 @@ const router = createRouter({
             {
               path: ':id',
               name: 'taskCompletionView',
-              component: () => import('@/views/task/components/taskcompletionView.vue')
+              component: () => import('@/views/task/components/taskCompletionView.vue')
             },
             {
               path: 'answer/:studentId',
@@ -46,7 +46,24 @@ const router = createRouter({
               component: () => import('@/views/task/components/taskCorrectView.vue')
             },
           ]
-        }
+        },
+        {
+          path: '/personalCenter',
+          name: 'personalCenter',
+          component: () => import('@/views/user/PersonalCenter.vue'),
+          children: [
+            {
+              path: '',
+              name: 'userInfo',
+              component: () => import('@/views/user/components/UserInfoView.vue')
+            },
+            {
+              path: 'editPassword',
+              name: 'editPassword',
+              component: () => import('@/views/user/components/EditPassword.vue')
+            },
+          ]
+        },
       ]
     },
     {

@@ -5,7 +5,7 @@ import useUtils from '@/composables/useUtils';
 import type { iclass } from '@/composables/interfaceType/classInterface';
 import type { itask } from '@/composables/interfaceType/taskInterface';
 import useTask from '@/composables/useTask';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import type { UploadProps, UploadUserFile } from 'element-plus'
 import type { result } from '@/composables/interfaceType/commonInterface';
 import useUpload from '@/composables/useUpload';
@@ -19,15 +19,15 @@ const router = useRouter();
 const { classes, getClass } = useClass();
 
 // 作业相关处理逻辑
-const { createTask } = useTask();
+const { createTask, deleteTask } = useTask();
 
 // 工具方法
-const { formattedDateTime, copyToClipboard, beforeTaskUpload, handleExceed, disabledDate, shortcuts } = useUtils();
+const { formattedDateTime, copyToClipboard, beforeUpload, handleExceed, disabledDate, shortcuts } = useUtils();
 
 // 上传逻辑
 const { uploadTask } = useUpload();
 // 删除逻辑
-const { deleteTask } = useDelete();
+const { deleteImg } = useDelete();
 
 // 创建新作业弹窗控制
 const createAssignmentDrawerVisible = ref<boolean>(false);
@@ -126,7 +126,7 @@ const createAssignment = async () => {
         }
 
         // 删除上传但移除的图片
-        deleteTask(filenames.value)
+        deleteImg(filenames.value)
 
         // 提交后刷新页面
         getClass();
@@ -136,6 +136,20 @@ const createAssignment = async () => {
 // 查看完成情况
 const viewCompletion = (assignmentId: number) => {
     router.push(`/task/${assignmentId}`)
+};
+
+// 删除作业
+const onDeleteTask = async (taskId: number) => {
+    ElMessageBox.confirm('此操作将永久删除该作业, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+    }).then(async () => {
+        await deleteTask(taskId);
+        getClass();
+    }).catch(() => {
+        ElMessage({ type: 'info', message: '已取消删除' });
+    });
 };
 
 // 初始化页面数据
@@ -165,8 +179,13 @@ onMounted(() => getClass())
                                     :timestamp="formattedDateTime(task.created_at || new Date())">
                                     <div class="assignment-item">
                                         <span>{{ task.title }}</span>
-                                        <el-button type="primary" link
-                                            @click="viewCompletion(task.id || 0)">查看完成情况</el-button>
+                                        <div style="margin-right: 30px;">
+                                            <el-button type="primary" link
+                                                @click="viewCompletion(task.id || 0)">完成情况</el-button>
+                                            <el-button type="danger" link
+                                                @click="onDeleteTask(task.id || 0)">删除</el-button>
+                                        </div>
+
                                     </div>
                                 </el-timeline-item>
                             </el-timeline>
@@ -209,7 +228,7 @@ onMounted(() => getClass())
 
                     <el-upload class="upload-demo" drag multiple :limit="10" v-model:file-list="fileList"
                         :on-exceed="handleExceed" list-type="picture-card" :on-preview="handlePictureCardPreview"
-                        :on-remove="handleRemove" :http-request="onUploadTask" :before-upload="beforeTaskUpload">
+                        :on-remove="handleRemove" :http-request="onUploadTask" :before-upload="beforeUpload">
                         <div class="el-upload__text">拖动图片到此处，或 <em>点击上传</em></div>
                         <template v-slot:tip>
                             <div class="el-upload__tip">最多上传10张小于10MB，格式为JPG/PNG的图片。</div>
@@ -295,6 +314,7 @@ onMounted(() => getClass())
     justify-content: flex-end;
     padding-top: 10px;
     /* 添加间距，使按钮与上方内容分隔 */
+    margin-right: 30px;
 }
 
 .create-assignment-drawer {

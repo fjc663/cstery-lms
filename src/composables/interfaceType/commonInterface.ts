@@ -4,10 +4,3 @@ export interface result {
     msg: string,
     data: any
 }
-
-// 修改密码传输的数据类型
-export interface ieditPassword {
-    oldPassword: string,
-    newPassword: string,
-    confirmPassword: string
-}

@@ -2,7 +2,7 @@
 import router from '@/router';
 import { useUserInfoStore } from '@/stores/useUserInfoStore';
 import { ref } from 'vue';
-import useUser from '@/composables/userUser';
+import useUser from '@/composables/useUser';
 
 // 判断是否显示登录注册按钮
 const useUserInfo = useUserInfoStore();
@@ -25,7 +25,7 @@ const toRegister = () => {
 }
 
 const goToProfile = () => {
-    router.push('/userInfo')
+    router.push('/personalCenter')
 }
 
 
@@ -54,8 +54,8 @@ const goToProfile = () => {
                     <el-menu-item index="/class">班级管理</el-menu-item>
                     <el-menu-item index="/task">作业管理</el-menu-item>
                     <el-menu-item index="/score">成绩管理</el-menu-item>
-                    <el-menu-item index="/talk">讨论区</el-menu-item>
                     <el-menu-item index="/resource">资源共享</el-menu-item>
+                    <el-menu-item index="/personalCenter">个人中心</el-menu-item>
                 </el-menu>
             </el-col>
 

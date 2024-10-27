@@ -41,7 +41,7 @@ const formattedDateTime = (date: Date) => {
 }
 
 // 上传图片前的钩子函数
-const beforeTaskUpload: UploadProps['beforeUpload'] = (file: File) => {
+const beforeUpload: UploadProps['beforeUpload'] = (file: File) => {
     const isJPGorPNG = file.type === 'image/jpeg' || file.type === 'image/png';
     const isLt10M = file.size / 1024 / 1024 < 10;
 
@@ -67,6 +67,24 @@ const handleExceed = () => {
 const disabledDate = (time: Date) => {
     return time.getTime() < Date.now()
 }
+
+// 根据出生日期计算年龄
+const calculateAge = (birthday: Date | string | null): string | number => {
+    if (!birthday) {
+        return '';
+    }
+
+    // 如果 `birthday` 是字符串，则尝试转换为 `Date`
+    const dateObj = birthday instanceof Date ? birthday : new Date(birthday);
+    if (isNaN(dateObj.getTime())) { // 确保转换成功
+        return '';
+    }
+
+    const ageDifMs: number = Date.now() - dateObj.getTime();
+    const ageDate: Date = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+};
+
 
 // 配置时间快捷选项
 const shortcuts = [
@@ -102,9 +120,10 @@ export default function () {
         goBack,
         formatDate,
         formattedDateTime,
-        beforeTaskUpload,
+        beforeUpload,
         handleExceed,
         disabledDate,
-        shortcuts
+        shortcuts,
+        calculateAge
     }
 }

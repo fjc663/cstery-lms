@@ -13,7 +13,7 @@ import { useRoute, useRouter } from 'vue-router';
 const router = useRouter();
 
 // 工具方法
-const { formatDate, goBack, formattedDateTime, beforeTaskUpload, handleExceed, disabledDate, shortcuts } = useUtils();
+const { formatDate, goBack, formattedDateTime, beforeUpload, handleExceed, disabledDate, shortcuts } = useUtils();
 
 // 作业相关处理逻辑
 const { task, getTaskById, studentCompletionStatus, getStudentCompletionStatus, editTask } = useTask();
@@ -21,7 +21,7 @@ const { task, getTaskById, studentCompletionStatus, getStudentCompletionStatus, 
 // 上传逻辑
 const { uploadTask } = useUpload();
 // 删除逻辑
-const { deleteTask } = useDelete();
+const { deleteImg } = useDelete();
 
 // 从路由获得作业ID
 const route = useRoute();
@@ -112,7 +112,7 @@ const editAssignment = async () => {
         editAssignmentDrawerVisible.value = false;
 
         // 删除上传但移除的图片
-        deleteTask(filenames.value)
+        deleteImg(filenames.value)
 
         // 提交后刷新页面
         getTaskById(taskId);
@@ -171,7 +171,7 @@ onMounted(async () => {
         <div class="submission-status">
             <el-row :gutter="20">
                 <!-- 已提交的学生 -->
-                <el-col :span="12">
+                <el-col :span="16">
                     <el-card class="submitted-students">
                         <h3>已提交的学生</h3>
                         <el-table :data="studentCompletionStatus.submitted" border
@@ -199,6 +199,13 @@ onMounted(async () => {
                                     </el-tag>
                                 </template>
                             </el-table-column>
+                            <el-table-column prop="score" label="分数">
+                                <template #default="scope">
+                                    <el-tag v-if="scope.row.score" type="danger" style="font-weight: bold;">
+                                        {{ scope.row.score }}
+                                    </el-tag>                                  
+                                </template>
+                            </el-table-column>
                             <el-table-column label="操作">
                                 <template #default="scope">
                                     <!-- 跳转打分按钮 -->
@@ -210,7 +217,7 @@ onMounted(async () => {
                 </el-col>
 
                 <!-- 未提交的学生 -->
-                <el-col :span="12">
+                <el-col :span="8">
                     <el-card class="unsubmitted-students">
                         <h3 style="color: red;">未提交的学生</h3>
                         <el-table :data="studentCompletionStatus.not_submitted" border
@@ -255,7 +262,7 @@ onMounted(async () => {
 
                     <el-upload class="upload-demo" drag multiple :limit="10" v-model:file-list="fileList"
                         :on-exceed="handleExceed" list-type="picture-card" :on-preview="handlePictureCardPreview"
-                        :on-remove="handleRemove" :http-request="onUploadTask" :before-upload="beforeTaskUpload">
+                        :on-remove="handleRemove" :http-request="onUploadTask" :before-upload="beforeUpload">
                         <div class="el-upload__text">拖动图片到此处，或 <em>点击上传</em></div>
                         <template v-slot:tip>
                             <div class="el-upload__tip">最多上传10张小于10MB，格式为JPG/PNG的图片。</div>

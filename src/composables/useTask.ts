@@ -1,4 +1,4 @@
-import { correctAnswerApi, createTaskApi, editTaskApi, getAnswerApi, getStudentCompletionStatusApi, getTaskByIdApi } from "@/apis/taskApi";
+import { correctAnswerApi, createTaskApi, deleteTaskApi, editTaskApi, getAnswerApi, getStudentCompletionStatusApi, getTaskByIdApi } from "@/apis/taskApi";
 import type { result } from "./interfaceType/commonInterface";
 import type { ianswer, icorrect, itask } from "./interfaceType/taskInterface";
 import { ElMessage } from "element-plus";
@@ -103,6 +103,17 @@ const correctAnswer = async (correct: icorrect): Promise<number> => {
     return res.code;
 }
 
+// 删除作业
+const deleteTask = async (taskId: number) => {
+    const res: result = await deleteTaskApi(taskId);
+
+    if (res.code === 1) {
+        ElMessage.success('删除成功');
+    } else {
+        ElMessage.error(res.msg);
+    }
+}
+
 export default function() {
     return {
         createTask,
@@ -113,6 +124,7 @@ export default function() {
         editTask,
         answer,
         getAnswer,
-        correctAnswer
+        correctAnswer,
+        deleteTask
     }
 }

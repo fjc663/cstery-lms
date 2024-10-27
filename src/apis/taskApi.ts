@@ -50,3 +50,12 @@ export function correctAnswerApi(correct: icorrect): any {
         data: correct
     })
 }
+
+// 删除作业
+export function deleteTaskApi(taskId: number):any {
+    return http({
+        url: '/teacher/task',
+        method: 'Delete',
+        params: {task_id: taskId}
+    })
+}

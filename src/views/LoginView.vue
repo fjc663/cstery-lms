@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import type { iregister, ilogin } from '@/composables/interfaceType/userInterface';
 import { ElMessage } from 'element-plus';
 import router from '@/router';
-import useUser from '@/composables/userUser';
+import useUser from '@/composables/useUser';
 
 // 判断当前是登录还是注册
 const isLogin = ref<boolean>(true);

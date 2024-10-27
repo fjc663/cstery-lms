@@ -19,6 +19,14 @@ export interface iuserInfo {
     phone: string,
     avatar: string,
     gender: number,
+    birthdate: Date | null,
     address: string,
     desc: string
+}
+
+// 修改密码传输的数据类型
+export interface ieditPassword {
+    old_password: string,
+    new_password: string,
+    confirm_password: string
 }

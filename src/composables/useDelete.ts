@@ -1,10 +1,10 @@
 import type { result } from "./interfaceType/commonInterface";
 import { ElMessage } from "element-plus";
-import { deleteTaskAPI } from "@/apis/deleteApi";
+import { deleteImgAPI } from "@/apis/deleteApi";
 
 // 删除作业图片
-const deleteTask = async (filenames: string[]) => {
-    const res: result = await deleteTaskAPI(filenames);
+const deleteImg = async (filenames: string[]) => {
+    const res: result = await deleteImgAPI(filenames);
 
     if (res.code === 0) {
         ElMessage.error(res.msg);
@@ -14,6 +14,6 @@ const deleteTask = async (filenames: string[]) => {
 
 export default function() {
     return {
-        deleteTask
+        deleteImg
     }
 }
