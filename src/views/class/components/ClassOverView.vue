@@ -15,6 +15,9 @@ const router = useRouter();
 // 班级信息处理逻辑
 const { classes, getClass, addClass, editClass, deleteClass } = useClass();
 
+// 表单实例的引用
+const classFormRef = ref<FormInstance>();
+
 const newClass = ref<iclass>({
     class_name: '',
     teacher_name: '',
@@ -125,9 +128,9 @@ onMounted(() => getClass());
 </script>
 
 <template>
-    <el-dialog v-model="isDialogVisible" title="创建新班级" width="500px">
+    <el-dialog v-model="isDialogVisible" :title="isEdit ? '修改班级信息' : '创建新班级'" width="500px">
         <div class="dialog-content">
-            <el-form :model="newClass" label-width="100px" :rules="rules" ref="productFormRef">
+            <el-form :model="newClass" label-width="100px" :rules="rules" ref="classFormRef">
                 <el-form-item label="班级名称" prop="class_name">
                     <el-input v-model="newClass.class_name" placeholder="班级名称" class="input-field" />
                 </el-form-item>
@@ -160,7 +163,7 @@ onMounted(() => getClass());
         </div>
         <template #footer>
             <el-button @click="onAddClass" class="cancel-button">取 消</el-button>
-            <el-button type="primary" @click="submitClassForm" class="confirm-button">{{ isEdit ? "保存" : "创建"
+            <el-button type="primary" @click="submitClassForm(classFormRef)" class="confirm-button">{{ isEdit ? "修改" : "创建"
                 }}</el-button>
         </template>
     </el-dialog>
@@ -201,7 +204,8 @@ onMounted(() => getClass());
                     </p>
                     <p>
                         邀请码：{{ classItem.class_code }}
-                        <el-button type="success" link class="copy-button" @click="copyToClipboard(classItem.class_code || '')">复制</el-button>
+                        <el-button type="success" link class="copy-button"
+                            @click="copyToClipboard(classItem.class_code || '')">复制</el-button>
                     </p>
                     <div class="button-group">
                         <el-button type="primary" size="small" @click.stop="onEditClass(classItem)">修改</el-button>

@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue';
 import useClass from '@/composables/useClass';
 import { useRoute } from 'vue-router';
 import useUtils from '@/composables/useUtils';
-import { Search } from '@element-plus/icons-vue'
+import { Search } from '@element-plus/icons-vue';
 
 
 // 通过路由获取班级ID
@@ -82,14 +82,14 @@ onMounted(async () => {
         <div class="student-list">
             <h2>班级学生</h2>
             <div class="search-controls">
-                <!-- 分类名称输入框 -->
+                <!-- 学生名称输入框 -->
                 <el-input v-model="filters.name" placeholder="请输入学生名称" clearable class="search-input">
                     <template #append>
                         <el-button @click="searchStudent" :icon="Search" />
                     </template>
                 </el-input>
 
-                <!-- 分类状态选择框 -->
+                <!-- 性别选择框 -->
                 <el-select v-model="filters.gender" @change="searchStudent" placeholder="性别" clearable
                     class="status-select">
                     <el-option label="全部" :value="-1"></el-option>

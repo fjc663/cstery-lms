@@ -162,7 +162,16 @@ onMounted(() => getClass())
         <el-row :gutter="20">
             <el-col :span="8" v-for="classItem in classes" :key="classItem.id">
                 <el-card class="class-card" shadow="always">
-                    <h2>{{ classItem.class_name }}</h2>
+                    <h2>
+                        <el-tooltip placement="top" effect="light" v-if="classItem.class_name.length > 30"
+                            popper-class="custom-tooltip">
+                            <template #content>
+                                <div>{{ classItem.class_name }}</div>
+                            </template>
+                            {{ classItem.class_name.slice(0, 30) + '...' }}
+                        </el-tooltip>
+                        <span v-else>{{ classItem.class_name }}</span>
+                    </h2>
                     <p>
                         班级代码: {{ classItem.class_code }}
                         <el-button type="success" link class="copy-button"

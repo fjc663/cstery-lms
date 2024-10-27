@@ -46,12 +46,12 @@ const editForm = ref<iuserInfo>({
 
 // 校验要修改的用户数据
 const rules = ref<FormRules<iuserInfo>>({
-    username: [
+    name: [
         { required: true, message: '请输入用户名', trigger: 'blur' },
-        { min: 1, max: 20, message: '用户名字符长度为1到20', trigger: 'blur' },
+        { min: 1, max: 100, message: '姓名字符长度为1到100', trigger: 'blur' },
     ],
     email: [
-        { message: '请输入邮箱地址', trigger: 'blur' },
+        { required: true, message: '请输入邮箱地址', trigger: 'blur' },
         { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] },
     ],
     phone: [
@@ -238,7 +238,7 @@ onMounted(async () => {
     <!-- 修改用户信息的抽屉 -->
     <el-drawer v-model="editUserInfoDrawer" title="修改基本信息" :before-close="cancelEdit">
         <el-form :model="editForm" label-width="auto" style="max-width: 600px" :rules="rules" ref="userRef">
-            <el-form-item label="姓名" prop="username">
+            <el-form-item label="姓名" prop="name">
                 <el-input v-model="editForm.name" />
             </el-form-item>
             <el-form-item label="性别">

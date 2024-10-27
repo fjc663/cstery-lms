@@ -91,7 +91,7 @@ const register = async () => {
         <div class="main-box">
             <div :class="['container', 'container-register', { 'is-txl': isLogin }]">
                 <form>
-                    <h1 class="main-title">CsteryLms-教师端</h1>
+                    <h1 class="main-title">Cstery ClassBridge-教师端</h1>
                     <h2 class="title">注册</h2>
                     <input class="form__input" type="text" placeholder="请输入用户名" v-model="registerForm.username" />
                     <input class="form__input" type="password" placeholder="请输入密码"
@@ -103,7 +103,7 @@ const register = async () => {
             </div>
             <div :class="['container', 'container-login', { 'is-txl is-z200': isLogin }]">
                 <form>
-                    <h1 class="main-title">CsteryLms-教师端</h1>
+                    <h1 class="main-title">Cstery ClassBridge-教师端</h1>
                     <h2 class="title">登录</h2>
                     <input class="form__input" type="text" placeholder="请输入用户名" v-model="loginForm.username" />
                     <input class="form__input" type="password" placeholder="请输入密码"

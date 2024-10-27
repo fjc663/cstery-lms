@@ -25,7 +25,7 @@ const toRegister = () => {
 }
 
 const goToProfile = () => {
-    router.push('/personalCenter')
+    router.push('/personal')
 }
 
 
@@ -41,7 +41,7 @@ const goToProfile = () => {
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-yuanzi"></use>
                     </svg>
-                    CsteryLms-教师端
+                    Cstery ClassBridge-教师端
                 </div>
             </el-col>
 
@@ -53,9 +53,8 @@ const goToProfile = () => {
                     <el-menu-item index="/">首页</el-menu-item>
                     <el-menu-item index="/class">班级管理</el-menu-item>
                     <el-menu-item index="/task">作业管理</el-menu-item>
-                    <el-menu-item index="/score">成绩管理</el-menu-item>
-                    <el-menu-item index="/resource">资源共享</el-menu-item>
-                    <el-menu-item index="/personalCenter">个人中心</el-menu-item>
+                    <el-menu-item index="/grade">成绩管理</el-menu-item>
+                    <el-menu-item index="/personal">个人中心</el-menu-item>
                 </el-menu>
             </el-col>
 

@@ -5,9 +5,14 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'layout',
       component: () => import('../views/layout/LayoutView.vue'),
       children: [
+        {
+          path: '',
+          name: 'home',
+          component: () => import('@/views/layout/components/HomeView.vue')
+        },
         {
           path: 'class',
           name: 'class',
@@ -48,8 +53,25 @@ const router = createRouter({
           ]
         },
         {
-          path: '/personalCenter',
-          name: 'personalCenter',
+          path: 'grade',
+          name: 'grade',
+          component: () => import('@/views/grade/GradeView.vue'),
+          children: [
+            {
+              path: '',
+              name: 'gradeOverView',
+              component: () => import('@/views/grade/components/gradeOverView.vue')
+            },
+            {
+              path: ':id',
+              name: 'gradeDetailView',
+              component: () => import('@/views/grade/components/gradeDetailView.vue')
+            }
+          ]
+        },
+        {
+          path: '/personal',
+          name: 'personal',
           component: () => import('@/views/user/PersonalCenter.vue'),
           children: [
             {

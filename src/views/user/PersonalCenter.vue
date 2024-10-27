@@ -8,13 +8,13 @@ import router from '@/router';
         <!-- 左侧：侧边栏导航 -->
         <el-aside width="240px" class="sidebar">
             <el-menu :default-active="router.currentRoute.value.path" class="menu" router>
-                <el-menu-item index="/personalCenter">
+                <el-menu-item index="/personal">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-yonghu"></use>
                     </svg>
                     <span>个人信息</span>
                 </el-menu-item>         
-                <el-menu-item index="/personalCenter/editPassword">
+                <el-menu-item index="/personal/editPassword">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-xiugaimima"></use>
                     </svg>

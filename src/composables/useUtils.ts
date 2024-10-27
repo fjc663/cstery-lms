@@ -63,11 +63,6 @@ const handleExceed = () => {
     ElMessage.warning('最多只能上传10张图片');
 };
 
-// 禁止选择过去时间
-const disabledDate = (time: Date) => {
-    return time.getTime() < Date.now()
-}
-
 // 根据出生日期计算年龄
 const calculateAge = (birthday: Date | string | null): string | number => {
     if (!birthday) {
@@ -85,6 +80,10 @@ const calculateAge = (birthday: Date | string | null): string | number => {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
 };
 
+// 禁止选择过去时间
+const disabledDate = (time: Date) => {
+    return time.getTime() < Date.now()
+}
 
 // 配置时间快捷选项
 const shortcuts = [
@@ -114,6 +113,19 @@ const shortcuts = [
       },
   ]
 
+// 判断是否到截止时间
+const isDueDateLaterThanNow = (dueDate: Date) => {
+    // 创建一个新的日期对象，设置为 due_date 的日期
+    const dueDateWithTime = new Date(dueDate);
+    dueDateWithTime.setHours(23, 59, 59, 999); // 设置时间为 23:59:59
+
+    // 获取当前时间
+    const now = new Date();
+
+    // 比较 dueDateWithTime 和当前时间
+    return dueDateWithTime > now; // 返回布尔值
+};
+
 export default function () {
     return {
         copyToClipboard,
@@ -124,6 +136,7 @@ export default function () {
         handleExceed,
         disabledDate,
         shortcuts,
-        calculateAge
+        calculateAge,
+        isDueDateLaterThanNow
     }
 }
