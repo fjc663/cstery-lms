@@ -6,10 +6,10 @@ const router = useRouter();
 
 // 轮播图图片
 const carouselImages = ref([
-    'https://cstery-sky.oss-cn-beijing.aliyuncs.com/student/avatar/8cb6b543-2ca6-419b-92b0-883d818812aa.png',
-    'http://127.0.0.1:8080/imgs/default_homework.png',
-    'http://127.0.0.1:8080/imgs/default_homework2.png',
-    'https://cstery-sky.oss-cn-beijing.aliyuncs.com/student/avatar/8cb6b543-2ca6-419b-92b0-883d818812aa.png',
+    'http://127.0.0.1:8080/imgs/lunbotu/tea1.png',
+    'http://127.0.0.1:8080/imgs/lunbotu/tea2.png',
+    'http://127.0.0.1:8080/imgs/lunbotu/tea3.png',
+    'http://127.0.0.1:8080/imgs/lunbotu/tea4.png',
 ]);
 
 // 快捷操作导航
@@ -20,19 +20,10 @@ const quickAccess = ref([
     { title: '个人中心', desc: '查看和完善个人信息', icon: 'Personal', route: '/personal' },
 ]);
 
-// 数据概览
-const overviewData = ref([
-    { title: '班级数量', value: '5', desc: '您管理的班级数量' },
-    { title: '学生人数', value: '200+', desc: '所有班级的学生总数' },
-    { title: '待批改作业', value: '12', desc: '未批改的作业总数' },
-    { title: '平台活跃度', value: '87%', desc: '学生的平均作业提交率' },
-]);
-
-// 最新通知与动态
-const notifications = ref([
-    { title: '新的班级公告', content: '请在2024年10月10日之前提交本学期的教学计划。' },
-    { title: '即将到期的作业', content: '数学作业将于2024年10月8日截止提交。' },
-    { title: '新的提交提醒', content: '3名学生刚刚提交了英语作业。' },
+// 宣传图片
+const promotionImages = ref([
+    'http://127.0.0.1:8080/imgs/lunbotu/tea5.png',
+    'http://127.0.0.1:8080/imgs/lunbotu/tea6.png',
 ]);
 
 // 导航到指定路由
@@ -63,30 +54,15 @@ const navigateTo = (route: string) => {
                 </el-col>
             </el-row>
         </div>
+    </div>
 
-        <!-- 数据概览 -->
-        <div class="data-overview">
-            <h2>数据概览</h2>
-            <el-row :gutter="20">
-                <el-col :span="6" v-for="(data, index) in overviewData" :key="index">
-                    <el-card shadow="hover" class="overview-card">
-                        <h3>{{ data.title }}</h3>
-                        <p>{{ data.value }}</p>
-                        <p class="overview-desc">{{ data.desc }}</p>
-                    </el-card>
-                </el-col>
-            </el-row>
-        </div>
-
-        <!-- 最新通知与动态 -->
-        <div class="latest-notifications">
-            <h2>最新通知与动态</h2>
-            <el-card v-for="(notification, index) in notifications" :key="index" class="notification-card"
-                shadow="hover">
-                <h3>{{ notification.title }}</h3>
-                <p>{{ notification.content }}</p>
-            </el-card>
-        </div>
+    <!-- 宣传图片 -->
+    <div class="promotion-images">
+        <el-row :gutter="20">
+            <el-col :span="24" v-for="(image, index) in promotionImages" :key="index">
+                <img :src="image" class="promotion-image" alt="宣传图片" />
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -103,15 +79,11 @@ const navigateTo = (route: string) => {
     border-radius: 8px;
 }
 
-.quick-access,
-.data-overview,
-.latest-notifications {
+.quick-access {
     margin-top: 40px;
 }
 
-.quick-access-card,
-.overview-card,
-.notification-card {
+.quick-access-card {
     margin: 10px 0;
     padding: 20px;
     text-align: center;
@@ -122,31 +94,17 @@ const navigateTo = (route: string) => {
     cursor: pointer;
 }
 
-.quick-access-card:hover,
-.overview-card:hover,
-.notification-card:hover {
+.quick-access-card:hover {
     transform: translateY(-5px);
 }
 
-.quick-access-card h3,
-.overview-card h3 {
+.quick-access-card h3 {
     margin-top: 10px;
     font-size: 1.2em;
 }
 
-.overview-card p {
-    font-size: 2em;
-    color: #409EFF;
-    margin: 10px 0;
-}
-
-.overview-desc,
-.notification-card p {
-    color: #666;
-}
-
-.notification-card h3 {
-    font-weight: bold;
-    font-size: 1.1em;
+.promotion-image {
+    width: 100%;
+    border-radius: 8px;
 }
 </style>

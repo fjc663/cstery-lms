@@ -4,7 +4,7 @@ import type { iclass } from '@/composables/interfaceType/classInterface';
 import useClass from '@/composables/useClass';
 import type { result } from '@/composables/interfaceType/commonInterface';
 import { ElMessage, ElDialog, ElMessageBox } from 'element-plus';
-import type { UploadProps, FormRules, FormInstance } from 'element-plus'
+import type { FormRules, FormInstance } from 'element-plus'
 import useUpload from '@/composables/useUpload';
 import { useRouter } from 'vue-router';
 import useUtils from '@/composables/useUtils';
@@ -14,6 +14,9 @@ const router = useRouter();
 
 // 班级信息处理逻辑
 const { classes, getClass, addClass, editClass, deleteClass } = useClass();
+
+// 工具方法
+const { copyToClipboard, beforeUpload } = useUtils();
 
 // 表单实例的引用
 const classFormRef = ref<FormInstance>();
@@ -111,18 +114,6 @@ const onUploadClass = async (avatar: any) => {
     }
 };
 
-// 上传班级图片前的钩子函数
-const beforeClassUpload: UploadProps['beforeUpload'] = (rawFile) => {
-    if (rawFile.size / 1024 / 1024 > 10) {
-        ElMessage.error('头像大小必须小于10MB');
-        return false;
-    }
-    return true;
-};
-
-// 复制到剪贴板的函数
-const { copyToClipboard } = useUtils();
-
 // 初始化班级数据
 onMounted(() => getClass());
 </script>
@@ -150,7 +141,7 @@ onMounted(() => getClass());
                 <el-form-item label="班级图片" prop="class_img">
                     <p class="upload-tip" style="color: red;">上传的班级图片应小于10MB，格式为JPG/PNG。</p>
                     <el-upload class="class-uploader" :http-request="onUploadClass" :show-file-list="false"
-                        :before-upload="beforeClassUpload">
+                        :before-upload="beforeUpload">
                         <img v-if="newClass.class_img" v-lazy="newClass.class_img" class="uploaded-image" />
                         <el-icon v-else class="class-uploader-icon">
                             <Plus />

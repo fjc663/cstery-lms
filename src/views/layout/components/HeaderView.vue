@@ -36,12 +36,8 @@ const goToProfile = () => {
     <el-container>
         <el-row class="nav-bar">
             <!-- 左边 Logo -->
-            <el-col :span="4">
+            <el-col :span="6">
                 <div class="logo">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-yuanzi"></use>
-                    </svg>
-                    Cstery ClassBridge-教师端
                 </div>
             </el-col>
 
@@ -59,7 +55,7 @@ const goToProfile = () => {
             </el-col>
 
             <!-- 右边 登录/用户信息 -->
-            <el-col :span="4" class="nav-right">
+            <el-col :span="6" class="nav-right">
                 <div v-if="!isLogin" class="auth-buttons">
                     <el-button type="primary" @click="toLogin" link>登录</el-button>
                     <el-button type="success" @click="toRegister" link>注册</el-button>
@@ -87,24 +83,32 @@ const goToProfile = () => {
 <style scoped>
 .nav-bar {
     position: fixed;
-    /* 固定顶栏在页面顶部 */
     top: 0;
     left: 0;
     width: 100vw;
     z-index: 1000;
-    /* 确保顶栏在最前面 */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #333;
-    /* 适当设置背景颜色 */
+    background-color: #ffffff;
+    /* 设置为纯白色 */
     padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* 添加轻微的阴影，以提升层次感 */
 }
 
 .logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: #ce23ce;
+    width: 100%;
+    height: 60px;
+    background-image: url('@/assets/images/logo.png');
+    /* 替换为你的 Logo 图片路径 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    /* 垂直居中对齐 */
+    justify-content: center;
+    /* 水平居中对齐 */
 }
 
 .center-content {
@@ -112,7 +116,6 @@ const goToProfile = () => {
     align-items: center;
     justify-content: center;
     gap: 30px;
-    /* 菜单和搜索框之间的间距 */
 }
 
 .main-menu {
@@ -121,6 +124,8 @@ const goToProfile = () => {
     justify-content: center;
     font-size: 16px;
     font-weight: 500;
+    color: #333;
+    /* 设置深色文字以增强可读性 */
 }
 
 .nav-right {
@@ -144,14 +149,14 @@ const goToProfile = () => {
 }
 
 .el-menu-item {
-    color: #fff;
+    color: #333;
+    /* 设置菜单项颜色 */
 }
 
 .el-menu-item:hover,
 .el-menu-item.is-active {
-    background-color: transparent;
-    border-bottom: 2px solid #f56c6c;
-    /* 高亮选中的菜单项 */
+    background-color: rgba(255, 0, 0, 0.1);
+    /* 悬停和选中状态的背景色 */
     color: #f56c6c;
     /* 高亮文字颜色 */
 }
@@ -160,7 +165,8 @@ const goToProfile = () => {
     cursor: pointer;
     display: flex;
     align-items: center;
-    color: #fff;
+    color: #333;
+    /* 下拉菜单链接颜色 */
 }
 
 .el-dropdown,

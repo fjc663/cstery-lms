@@ -194,16 +194,17 @@ onMounted(async () => {
                             </el-table-column>
                             <el-table-column prop="is_correct" label="批改状态">
                                 <template #default="scope">
-                                    <el-tag :type="scope.row.is_correct ? 'success' : 'info'">
+                                    <el-tag :type="scope.row.is_correct ? 'primary' : 'info'">
                                         {{ scope.row.is_correct ? '已批改' : '未批改' }}
                                     </el-tag>
                                 </template>
                             </el-table-column>
                             <el-table-column prop="score" label="分数">
                                 <template #default="scope">
-                                    <el-tag v-if="scope.row.score" type="danger" style="font-weight: bold;">
+                                    <el-tag v-if="scope.row.score" :type="scope.row.score >= 60 ? 'success' : 'danger'"
+                                        style="font-weight: bold;">
                                         {{ scope.row.score }}
-                                    </el-tag>                                  
+                                    </el-tag>
                                 </template>
                             </el-table-column>
                             <el-table-column label="操作">

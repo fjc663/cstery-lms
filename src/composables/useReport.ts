@@ -27,6 +27,7 @@ const pageQueryTask = ref<itaskPageQuery>({
 // 分页查询得到总条数
 const totaltask = ref<number>(0);
 
+// 查询所有学生成绩
 const getAllTask = async () => {
     const res: result = await getAllTaskApi(pageQueryTask.value);
 
@@ -39,6 +40,7 @@ const getAllTask = async () => {
     taskScores.value = res.data.records;
 }
 
+// 查询作业报告
 const getTaskReport = async (taskId: number) => {
     const res: result = await getTaskReportApi(taskId);
 

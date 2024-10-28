@@ -115,6 +115,16 @@ const shortcuts = [
 
 // 判断是否到截止时间
 const isDueDateLaterThanNow = (dueDate: Date) => {
+    if (!dueDate) {
+        return '';
+    }
+
+    // 如果 `birthday` 是字符串，则尝试转换为 `Date`
+    const dateObj = dueDate instanceof Date ? dueDate : new Date(dueDate);
+    if (isNaN(dateObj.getTime())) { // 确保转换成功
+        return '';
+    }
+
     // 创建一个新的日期对象，设置为 due_date 的日期
     const dueDateWithTime = new Date(dueDate);
     dueDateWithTime.setHours(23, 59, 59, 999); // 设置时间为 23:59:59
