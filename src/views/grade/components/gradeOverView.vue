@@ -137,7 +137,11 @@ onMounted(() => {
             </el-table-column>
 
             <!-- 平均分数 -->
-            <el-table-column prop="average_score" label="平均分数" width="120"></el-table-column>
+            <el-table-column prop="average_score" label="平均分数" width="120">
+                <template #default="scope">
+                    {{ scope.row.average_score.toFixed(2) }}
+                </template>
+            </el-table-column>
 
             <!-- 操作 -->
             <el-table-column label="操作" width="150">
