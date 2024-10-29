@@ -92,7 +92,7 @@ onMounted(async () => {
                     formatter: '{value}%',
                     color: '#333',
                 },
-                data: [{ value: taskReport.value.pass_rate * 100, name: '及格率' }],
+                data: [{ value: (taskReport.value.pass_rate * 100).toFixed(2), name: '及格率' }],
             },
             {
                 name: '平均分',
@@ -117,7 +117,7 @@ onMounted(async () => {
                     formatter: '{value}分',
                     color: '#333',
                 },
-                data: [{ value: taskReport.value.average_score, name: '平均分' }],
+                data: [{ value: (taskReport.value.average_score).toFixed(2), name: '平均分' }],
             },
         ],
     });

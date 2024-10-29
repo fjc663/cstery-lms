@@ -91,11 +91,10 @@ const register = async () => {
         <div class="main-box">
             <div :class="['container', 'container-register', { 'is-txl': isLogin }]">
                 <form>
-                    <h1 class="main-title">Cstery ClassBridge-教师端</h1>
+                    <h1 class="main-title">Cstery LearnHub-教师端</h1>
                     <h2 class="title">注册</h2>
                     <input class="form__input" type="text" placeholder="请输入用户名" v-model="registerForm.username" />
-                    <input class="form__input" type="password" placeholder="请输入密码"
-                        v-model="registerForm.password" />
+                    <input class="form__input" type="password" placeholder="请输入密码" v-model="registerForm.password" />
                     <input class="form__input" type="password" placeholder="请确认密码"
                         v-model="registerForm.confirm_password" />
                     <div class="form__button" @click="register">立即注册</div>
@@ -106,8 +105,7 @@ const register = async () => {
                     <h1 class="main-title">Cstery LearnHub-教师端</h1>
                     <h2 class="title">登录</h2>
                     <input class="form__input" type="text" placeholder="请输入用户名" v-model="loginForm.username" />
-                    <input class="form__input" type="password" placeholder="请输入密码"
-                        v-model="loginForm.password" />
+                    <input class="form__input" type="password" placeholder="请输入密码" v-model="loginForm.password" />
                     <div class="form__button" @click="login">立即登录</div>
                 </form>
             </div>
@@ -137,12 +135,16 @@ const register = async () => {
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
-    background-image: url("@/assets/images/background.jpg");
+    background-image: url("@/assets/images/bg.jpeg");
     color: #a0a5a8;
+    background-repeat: no-repeat;
+    /* 防止背景重复 */
+    background-size: cover;
+    /* 让背景图覆盖整个区域 */
 }
 
 .main-box {
@@ -156,6 +158,12 @@ const register = async () => {
     box-shadow: 1px 1px 100px 10PX #ecf0f3;
     border-radius: 12px;
     overflow: hidden;
+
+    /* 调整位置 */
+    left: -180px;
+    /* 左移 180px */
+    top: 30px;
+    /* 下移 30px */
 
     .container {
         display: flex;

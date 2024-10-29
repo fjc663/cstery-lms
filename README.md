@@ -46,21 +46,37 @@
 ## 关键页面展示
 
 1. **主页**：
-   <!-- 插入主页截图或视频 -->
-   ![Homepage](./public/readmeImage/homepage.png)
+
+   ![主页1](./public/readmeImgVideo/img1.png)
 
 2. **班级管理**：
-   ![Class Management](./public/readmeImage/class_management.png)
+
+   ![班级管理1](./public/readmeImgVideo/img2.png)
+
+   ![班级管理2](./public/readmeImgVideo/img3.png)
 
 3. **作业管理**：
-   - 可查看和批改学生提交的作业。
-   ![Assignment Management](./public/readmeImage/assignment_management.png)
+   
+   ![作业管理1](./public/readmeImgVideo/img4.png)
+
+   ![作业管理2](./public/readmeImgVideo/img5.png)
+
+   ![作业管理3](./public/readmeImgVideo/img6.png)
 
 4. **成绩管理**：
-   暂未实现
+
+   ![成绩管理1](./public/readmeImgVideo/img7.png)
+
+   ![成绩管理2](./public/readmeImgVideo/img8.png)
 
 5. **个人中心**：
-   <!-- 插入个人中心视频 -->
-   <video src="./public/readmeImage/profile_demo.mp4" controls width="600">
-   Your browser does not support the video tag.
+   
+   ![个人中心1](./public/readmeImgVideo/img9.png)
+
+   ![个人中心2](./public/readmeImgVideo/img10.png)
+   
+6. **视频演示**
+
+   <video src="./public/readmeImgVideo/learnHubTea.mp4" controls width="600">
+        Your browser does not support the video tag.
    </video>
