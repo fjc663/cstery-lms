@@ -18,7 +18,7 @@ import HeaderView from '@/views/layout/components/HeaderView.vue'
 
       <!-- 页脚 -->
       <el-footer height="60px" class="footer">
-        <span>© 2024 CsteryLms. 保留所有权利。</span>
+        <span>© 2024 Cstery LearnHub. 保留所有权利。</span>
       </el-footer>
 
     </el-container>

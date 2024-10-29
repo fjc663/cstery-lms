@@ -77,6 +77,4 @@
    
 6. **视频演示**
 
-   <video src="./public/readmeImgVideo/learnHubTea.mp4" controls width="600">
-        Your browser does not support the video tag.
-   </video>
+   ![视频演示](./public/readmeImgVideo/video.gif)
