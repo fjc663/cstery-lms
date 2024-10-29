@@ -49,7 +49,13 @@
 
    ![主页1](./public/readmeImgVideo/img1.png)
 
+   ![主页1](./public/readmeImgVideo/img1.png)
+
 2. **班级管理**：
+
+   ![班级管理1](./public/readmeImgVideo/img2.png)
+
+   ![班级管理2](./public/readmeImgVideo/img3.png)
 
    ![班级管理1](./public/readmeImgVideo/img2.png)
 
@@ -62,8 +68,18 @@
    ![作业管理2](./public/readmeImgVideo/img5.png)
 
    ![作业管理3](./public/readmeImgVideo/img6.png)
+   
+   ![作业管理1](./public/readmeImgVideo/img4.png)
+
+   ![作业管理2](./public/readmeImgVideo/img5.png)
+
+   ![作业管理3](./public/readmeImgVideo/img6.png)
 
 4. **成绩管理**：
+
+   ![成绩管理1](./public/readmeImgVideo/img7.png)
+
+   ![成绩管理2](./public/readmeImgVideo/img8.png)
 
    ![成绩管理1](./public/readmeImgVideo/img7.png)
 
