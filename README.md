@@ -6,7 +6,7 @@
 
 欢迎来到 **cstery-learn-hub**，这是一个 **教师端** 的学习平台。
 
-对应的后端项目: [https://github.com/fjc663/cstery-library-fastapi](https://github.com/fjc663/cstery-library-fastapi)
+对应的后端项目: [https://github.com/fjc663/cstery-lms-fastapi](https://github.com/fjc663/cstery-lms-fastapi)
 
 ---
 
