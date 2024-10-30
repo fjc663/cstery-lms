@@ -35,9 +35,13 @@
    ```bash
    npm run dev
    ```
-   用户端和管理端将在本地运行。端口为5173
 
-4. **访问**
+4. **打包项目**：
+   ```bash
+   npm run build
+   ```
+
+5. **访问**
 
    访问项目: [http://localhost:5173/](http://localhost:5173/)  
 
