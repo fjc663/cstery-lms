@@ -153,7 +153,7 @@ onMounted(() => getClass());
 
         </div>
         <template #footer>
-            <el-button @click="onAddClass" class="cancel-button">取 消</el-button>
+            <el-button @click="isDialogVisible=false" class="cancel-button">取 消</el-button>
             <el-button type="primary" @click="submitClassForm(classFormRef)" class="confirm-button">{{ isEdit ? "修改" : "创建"
                 }}</el-button>
         </template>

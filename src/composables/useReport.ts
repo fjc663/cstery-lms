@@ -1,8 +1,9 @@
-import { getAllTaskApi, getTaskReportApi } from "@/apis/reportApi"
+import { getAllTaskApi, getHomeImageApi, getTaskReportApi } from "@/apis/reportApi"
 import type { result } from "./interfaceType/commonInterface"
 import type { itaskPageQuery, itaskReport, itaskScore } from "./interfaceType/taskInterface"
 import { ref } from "vue"
 import { ElMessage } from "element-plus"
+import type { ihomeImage } from "./interfaceType/reportInterface"
 
 
 // 班级学生数据列表
@@ -26,6 +27,9 @@ const pageQueryTask = ref<itaskPageQuery>({
 
 // 分页查询得到总条数
 const totaltask = ref<number>(0);
+
+// 首页图片数据
+const homeImages = ref<ihomeImage[]>([]);
 
 // 查询所有学生成绩
 const getAllTask = async () => {
@@ -52,6 +56,18 @@ const getTaskReport = async (taskId: number) => {
     taskReport.value = res.data;
 }
 
+// 获得首页图片
+const getHomeImage = async () => {
+    const res: result = await getHomeImageApi();
+
+    if (res.code === 0) {
+        ElMessage.error(res.msg);
+        return;
+    }
+
+    homeImages.value = res.data;
+}
+
 
 export default function() {
     return {
@@ -60,6 +76,8 @@ export default function() {
         totaltask,
         taskScores,
         taskReport,
-        getTaskReport
+        getTaskReport,
+        homeImages,
+        getHomeImage
     }
 }

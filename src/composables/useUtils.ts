@@ -1,14 +1,18 @@
 import router from '@/router';
 import { ElMessage, type UploadProps } from 'element-plus';
+import useClipboard from 'vue-clipboard3';
 
+
+const { toClipboard } = useClipboard();
 // 复制到剪贴板的函数
 const copyToClipboard = async (text: string) => {
     try {
-        await navigator.clipboard.writeText(text);
+        await toClipboard(text);
         ElMessage.success('复制成功');
     } catch {
         ElMessage.error("复制失败");
     }
+
 };
 
 // 返回上次路由
@@ -88,30 +92,30 @@ const disabledDate = (time: Date) => {
 // 配置时间快捷选项
 const shortcuts = [
     {
-      text: '一周后',
-      value: () => {
-        const date = new Date()
-        date.setTime(date.getTime() + 3600 * 1000 * 24 * 7)
-        return date
-      },
+        text: '一周后',
+        value: () => {
+            const date = new Date()
+            date.setTime(date.getTime() + 3600 * 1000 * 24 * 7)
+            return date
+        },
     },
     {
         text: '二周后',
         value: () => {
-          const date = new Date()
-          date.setTime(date.getTime() + 3600 * 1000 * 24 * 14)
-          return date
+            const date = new Date()
+            date.setTime(date.getTime() + 3600 * 1000 * 24 * 14)
+            return date
         },
-      },
-      {
+    },
+    {
         text: '30天后',
         value: () => {
-          const date = new Date()
-          date.setTime(date.getTime() + 3600 * 1000 * 24 * 30)
-          return date
+            const date = new Date()
+            date.setTime(date.getTime() + 3600 * 1000 * 24 * 30)
+            return date
         },
-      },
-  ]
+    },
+]
 
 // 判断是否到截止时间
 const isDueDateLaterThanNow = (dueDate: Date) => {

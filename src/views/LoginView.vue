@@ -135,16 +135,12 @@ const register = async () => {
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
-    background-image: url("@/assets/images/bg.jpeg");
+    background-image: url("@/assets/images/background.jpg");
     color: #a0a5a8;
-    background-repeat: no-repeat;
-    /* 防止背景重复 */
-    background-size: cover;
-    /* 让背景图覆盖整个区域 */
 }
 
 .main-box {
@@ -158,12 +154,6 @@ const register = async () => {
     box-shadow: 1px 1px 100px 10PX #ecf0f3;
     border-radius: 12px;
     overflow: hidden;
-
-    /* 调整位置 */
-    left: -180px;
-    /* 左移 180px */
-    top: 30px;
-    /* 下移 30px */
 
     .container {
         display: flex;

@@ -16,3 +16,10 @@ export function getTaskReportApi(taskId: number): any {
         url: `/teacher/report/${taskId}`
     })
 }
+
+// 请求首页图片
+export function getHomeImageApi(): any {
+    return http({
+        url: '/teacher/report/home/images'
+    })
+}

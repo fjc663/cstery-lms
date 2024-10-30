@@ -1,7 +1,6 @@
 import http from '@/utils/http'
-import type { iregister, ilogin } from '@/composables/interfaceType/userInterface'
+import type { iregister, ilogin, ieditPassword } from '@/composables/interfaceType/userInterface'
 import type { iuserInfo } from '@/composables/interfaceType/userInterface'
-import type { ieditPassword } from '@/composables/interfaceType/commonInterface'
 
 
 // 用户注册
